@@ -2,187 +2,155 @@
 
 🛒 Walmart Black Friday | Revenue Intelligence System
 
-🧠 1. Executive Summary
+🧠 Executive Summary
 
 This project builds a customer revenue intelligence system on top of raw Walmart Black Friday transaction data.
 
 Instead of reporting topline revenue, the system answers:
 
-💰 Who actually drives revenue?
+🟢 Who actually drives revenue?
+🟢 How concentrated is revenue across customers?
+🟢 Which customers are active but poorly monetized?
+🟢 Where is revenue leaking despite strong demand?
 
-📊 How concentrated is revenue across customers?
+The output is an executive-ready segmentation and leakage framework built using SQL, Python, and Power BI.
 
-⚠️ Which customers are active but poorly monetized?
-
-🕳️ Where is revenue leaking despite strong demand?
-
-The output is an executive-ready segmentation & leakage framework powered by SQL, Python, and Power BI.
-
-🏗️ 2. System Architecture
-📂 Raw Transactions (CSV)
+🏗️ System Architecture
+Raw Transactions (CSV)
         ↓
-🧮 SQL Analytics Engine
-   • Customer metrics
-   • Revenue ranking
-   • Value segmentation
+SQL Analytics Engine
+  🔵 Customer metrics
+  🔵 Revenue ranking
+  🔵 Value segmentation
         ↓
-🐍 Python Enrichment Layer
-   • Feature validation
-   • Dataset enrichment
+Python Enrichment Layer
+  🟣 Feature validation
+  🟣 Dataset enrichment
         ↓
-📊 Power BI Intelligence Layer
-   • Revenue concentration
-   • Value leakage detection
-   • Decision dashboards
+Power BI Intelligence Layer
+  🟠 Revenue concentration
+  🟠 Value leakage diagnostics
+  🟠 Decision dashboards
 
 
-This is a pipeline, not a notebook exercise.
+This is a pipeline, not a notebook-only analysis.
 
-🧮 3. Layer 1 — SQL Revenue Analytics Engine
+🧮 Layer 1 — SQL Revenue Analytics Engine
 
-SQL is the primary computation layer.
+SQL acts as the primary computation layer.
 
-🔹 Core Responsibilities
+Responsibilities
 
-Transform transaction-level data into customer-level intelligence
+🔵 Transform transaction-level data into customer-level intelligence
+🔵 Engineer revenue, frequency, and value metrics
+🔵 Perform revenue-based customer segmentation
 
-Engineer revenue and frequency metrics
+Key Outputs
 
-Perform revenue-based segmentation
+🟢 Total revenue per customer
+🟢 Transaction frequency
+🟢 Average purchase value
+🟢 Revenue-ranked segments:
 
-🔹 Key Outputs
+🔷 Top 20%
 
-Total revenue per customer
+🔷 Mid 30%
 
-Transaction frequency
+🔷 Bottom 50%
 
-Average purchase value
+Segmentation is economically interpretable and business-aligned.
 
-Revenue-ranked customer segments:
+🐍 Layer 2 — Python Enrichment & Validation
 
-🔵 Top 20%
+Python is used selectively where SQL becomes inefficient.
 
-🟣 Mid 30%
+Responsibilities
 
-⚫ Bottom 50%
+🟣 Final dataset enrichment
+🟣 Feature consistency and validation
+🟣 Preparing Power BI–ready outputs
 
-Segmentation is economically interpretable, not algorithmic guesswork.
+Design principle:
+SQL performs heavy analytical logic; Python complements, not duplicates.
 
-🐍 4. Layer 2 — Python Enrichment & Validation
+📊 Layer 3 — Revenue Intelligence Dashboard (Power BI)
 
-Python is used where SQL stops being optimal.
+The Power BI dashboard is designed for decision-makers, not exploratory analysis.
 
-🔹 Responsibilities
+Core KPIs
 
-Final dataset enrichment
+🟠 Total Revenue: 1059.05 bn
+🟠 Total Customers: 5.89K
+🟠 Average Purchase Value: $9K
+🟠 Top 20% Revenue Share: 46.2%
 
-Feature consistency checks
+These KPIs immediately highlight revenue concentration risk.
 
-Preparing Power BI–ready outputs
-
-🧠 Design choice:
-
-Heavy logic stays in SQL. Python complements — it does not duplicate.
-
-📊 5. Layer 3 — Revenue Intelligence Dashboard (Power BI)
-
-This dashboard is built for decision-makers, not exploratory analysis.
-
-📌 Core KPIs
-
-💰 Total Revenue: 1059.05 bn
-
-👥 Total Customers: 5.89K
-
-🧾 Average Purchase Value: $9K
-
-🎯 Top 20% Revenue Share: 46.2%
-
-👉 Immediate takeaway: Revenue is concentrated but expandable.
-
-📉 Revenue Concentration by Segment
+📈 Revenue Contribution by Segment
 
 🔵 Top 20% → ~489 bn
-
 🟣 Mid 30% → ~360 bn
-
 ⚫ Bottom 50% → ~211 bn
 
-This highlights:
-
-⚠️ Dependency risk on a small customer base
-
-🚀 Mid-tier customers as the largest growth lever
+This indicates:
+🟢 A small customer base drives a large share of revenue
+🟢 Mid-tier customers represent the largest monetization opportunity
 
 🔍 Customer Value Distribution (Transactions vs Revenue)
 
-This visualization reveals:
+This visualization surfaces:
+🟠 High-activity customers with low revenue yield
+🟠 Monetization inefficiency despite engagement
+🟠 Early signals of customer value leakage
 
-High-activity customers with weak revenue yield
+This functions as a diagnostic tool, not a descriptive chart.
 
-Monetization inefficiency despite engagement
+💳 Average Purchase Value by Segment
 
-Early warning signals of value leakage
+Insights:
+🔴 Bottom 50% shows high activity but weak revenue efficiency
+🟢 Top 20% monetizes more effectively per transaction
 
-This is a diagnostic tool, not a decorative chart.
+Leakage is driven by pricing and monetization, not demand shortage.
 
-🧾 Average Purchase Value Analysis
+🕳️ Value Leakage Diagnostics
 
-Key findings:
+Identified leakage patterns include:
+🔴 High transaction counts with low revenue contribution
+🔴 Over-engaged low-value customers inflating operational cost
+🔴 Under-leveraged mid-value customers lacking targeted strategies
 
-⚫ Bottom 50% → high activity, low revenue efficiency
+These risks remain invisible in topline-only reporting.
 
-🔵 Top 20% → stronger monetization per transaction
-
-📌 Leakage is driven by pricing & monetization, not lack of demand.
-
-🕳️ 6. Value Leakage Diagnostics
-
-Identified leakage patterns:
-
-High transaction volume with low revenue contribution
-
-Over-engaged low-value customers increasing operational cost
-
-Under-leveraged mid-value customers lacking targeted strategies
-
-These risks are invisible in topline-only reporting.
-
-🎯 7. Business Actions Enabled
-Customer Segment	Strategic Action
-🔵 Top 20%	Retain, personalize, upsell
-🟣 Mid 30%	Pricing optimization, bundles
+🎯 Business Actions Enabled
+Customer Segment	Action
+🔵 Top 20%	Retention, personalization, upsell
+🟣 Mid 30%	Pricing optimization, bundling
 ⚫ Bottom 50%	Cost control, selective reactivation
 
-🚫 One-size-fits-all retention destroys margin.
+A one-size-fits-all retention strategy would destroy margin.
 
-🛠️ 8. Technologies Used
+🛠️ Technologies Used
 
-📐 Analytics
+Analytics
+🔵 SQL (metrics, segmentation, insights)
+🟣 Python (enrichment and validation)
 
-SQL (metrics, segmentation, insights)
+Visualization
+🟠 Power BI (executive dashboard)
 
-Python (enrichment, validation)
-
-📊 Visualization
-
-Power BI (executive dashboard)
-
-📁 9. Project Structure
-📂 data_raw/          → raw Walmart transactions
-📂 data_processed/    → enriched customer dataset
-📂 sql/               → analytics & segmentation logic
-📂 python/            → enrichment notebook
-📂 powerbi/           → executive dashboard
+📁 Project Structure
+data_raw/        → raw Walmart transaction data
+data_processed/  → enriched customer dataset
+sql/             → analytics & segmentation logic
+python/          → enrichment notebook
+powerbi/         → executive dashboard
 
 🧾 Final Note
 
-This project is intentionally framed as a revenue intelligence system, not a visualization exercise.
+This project is structured as a revenue intelligence system, not a visualization exercise.
 
 The emphasis is on:
-
-💡 Economic signal over visual polish
-
-🎯 Segmentation over averages
-
-🧠 Decisions over dashboards
+🟢 Economic signal over visual polish
+🟢 Segmentation over averages
+🟢 Decisions over dashboards
